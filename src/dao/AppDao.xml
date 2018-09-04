@@ -3,8 +3,19 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.AppDao">
-
-
-
-
+  <!-- 判断密码账户是否正确 -->
+  <select id="select_User" resultType="Dev_User">
+   select * from dev_user  where devCode =#{name} and devPassword =#{pwd}
+  </select>
+  
+  <!-- 判断密码是否正确 -->
+  <select id="select_pwd" resultType="int">
+      SELECT COUNT(devPassword) FROM dev_user WHERE devPassword=#{pwd1}
+  </select>
+  
+  <!-- 判断账户是否正确 -->
+   <select id="select_Code" resultType="int">
+      SELECT COUNT(devPassword) FROM dev_user WHERE devCode=#{Code}
+  </select>
+  
 </mapper>
